@@ -1,0 +1,15 @@
+{% set datamap = salt['grains.filter_by']({
+  'Debian': {
+    'lightdm': {
+      'pkgs': [
+        'lightdm',
+      ],
+      'conf_file': '/etc/lightdm/lightdm.conf',
+      'conf_template': 'salt://kodi/templates/lightdm.conf.jinja',
+      'svc_name': 'lightdm',
+    },
+    'kodi_pkgs': [
+      'kodi',
+    ],
+  },
+}, merge=salt['pillar.get']('kodi:lookup')) %}

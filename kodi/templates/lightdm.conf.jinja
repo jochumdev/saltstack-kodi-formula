@@ -1,0 +1,7 @@
+[SeatDefaults]
+autologin-guest=false
+{%- if salt['pillar.get']('kodi:autologin:enable', False) %}
+autologin-user={{ salt['pillar.get']('kodi:autologin:user')}}
+autologin-user-timeout={{ salt['pillar.get']('kodi:autologin:timeout')}}
+autologin-session=kodi
+{%- endif %}
