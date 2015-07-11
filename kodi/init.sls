@@ -40,6 +40,17 @@ kodi_lightdm:
       - file: kodi_lightdm
     - watch:
       - file: kodi_lightdm
+
+kodi_lightdm_default:
+  file.managed:
+    - name: /etc/X11/default-display-manager
+    - contents: |
+        /usr/sbin/lightdm
+    - user: root
+    - group: root
+    - mode: 644
+    - watch:
+      - pkg: kodi_lightdm
 {% endif %}
 
 kodi:
